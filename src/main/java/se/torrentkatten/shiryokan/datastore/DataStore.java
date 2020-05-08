@@ -31,6 +31,6 @@ public class DataStore {
 
     public GameConsole createGameConsole(GameConsole gameConsole) {
         consoles.add(gameConsole);
-        return consoles.stream().filter(c->c.getUuid().equals(gameConsole.getUuid())).findFirst().get();
+        return consoles.stream().filter(c -> c.getUuid().equals(gameConsole.getUuid())).findFirst().get();
     }
 }
