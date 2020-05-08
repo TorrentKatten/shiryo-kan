@@ -1,4 +1,4 @@
-package se.torrentkatten.shiryokan.api.model;
+package se.torrentkatten.shiryokan.datastore.model;
 
 import com.google.common.collect.ImmutableList;
 
@@ -45,6 +45,11 @@ public final class GameConsole {
         private String name;
         private List<Game> games;
         private Region region;
+
+        public Builder withUuid(UUID uuid) {
+            this.uuid = uuid;
+            return this;
+        }
 
         public Builder withName(String name) {
             this.name = name;

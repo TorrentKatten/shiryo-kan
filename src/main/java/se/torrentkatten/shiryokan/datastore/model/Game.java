@@ -1,12 +1,12 @@
-package se.torrentkatten.shiryokan.api.model;
+package se.torrentkatten.shiryokan.datastore.model;
 
 import java.util.UUID;
 
 public class Game {
 
-    private UUID uuid;
-    private String name;
-    private Region region;
+    private final UUID uuid;
+    private final String name;
+    private final Region region;
 
     private Game(UUID uuid, String name, Region region) {
         this.uuid = uuid;
@@ -34,6 +34,11 @@ public class Game {
         private UUID uuid = UUID.randomUUID();
         private String name;
         private Region region;
+
+        public Game.Builder withUuid(UUID uuid) {
+            this.uuid = uuid;
+            return this;
+        }
 
         public Game.Builder withName(String name) {
             this.name = name;

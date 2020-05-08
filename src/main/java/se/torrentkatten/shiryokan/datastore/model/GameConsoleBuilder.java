@@ -1,6 +1,11 @@
-package se.torrentkatten.shiryokan.api.model;
+package se.torrentkatten.shiryokan.datastore.model;
+
+import java.util.UUID;
 
 public interface GameConsoleBuilder {
+
+    GameConsoleBuilder withUuid(UUID uuid);
+
     GameConsoleBuilder withName(String name);
 
     GameConsoleBuilder withGames(Game... games);

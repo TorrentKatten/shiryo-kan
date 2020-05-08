@@ -1,8 +1,8 @@
-package se.torrentkatten.shiryokan.api.datastore;
+package se.torrentkatten.shiryokan.datastore;
 
-import se.torrentkatten.shiryokan.api.model.Game;
-import se.torrentkatten.shiryokan.api.model.GameConsole;
-import se.torrentkatten.shiryokan.api.model.Region;
+import se.torrentkatten.shiryokan.datastore.model.Game;
+import se.torrentkatten.shiryokan.datastore.model.GameConsole;
+import se.torrentkatten.shiryokan.datastore.model.Region;
 
 import javax.inject.Singleton;
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ public class DataStore {
     public DataStore() {
         consoles = new ArrayList<>();
         consoles.add(GameConsole.builder()
-                .withName("NintendoSwitch")
+                .withName("Nintendo Switch")
                 .withRegion(Region.EU)
                 .withGames(Game.builder()
                         .withName("Diablo III: Eternal Collection")
@@ -27,5 +27,10 @@ public class DataStore {
 
     public List<GameConsole> findAllGameConsoles() {
         return List.copyOf(consoles);
+    }
+
+    public GameConsole createGameConsole(GameConsole gameConsole) {
+        consoles.add(gameConsole);
+        return consoles.stream().filter(c->c.getUuid().equals(gameConsole.getUuid())).findFirst().get();
     }
 }
