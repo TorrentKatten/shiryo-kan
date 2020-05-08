@@ -4,13 +4,17 @@ import se.torrentkatten.shiryokan.api.model.Game;
 import se.torrentkatten.shiryokan.api.model.GameConsole;
 import se.torrentkatten.shiryokan.api.model.Region;
 
+import javax.inject.Singleton;
 import java.util.ArrayList;
 import java.util.List;
 
+@Singleton
 public class DataStore {
-    private static List<GameConsole> consoles = new ArrayList<>();
 
-    static {
+    private static List<GameConsole> consoles;
+
+    public DataStore() {
+        consoles = new ArrayList<>();
         consoles.add(GameConsole.builder()
                 .withName("NintendoSwitch")
                 .withRegion(Region.EU)
@@ -21,7 +25,7 @@ public class DataStore {
         );
     }
 
-    public static List<GameConsole> findAllGameConsoles(){
+    public List<GameConsole> findAllGameConsoles() {
         return List.copyOf(consoles);
     }
 }
